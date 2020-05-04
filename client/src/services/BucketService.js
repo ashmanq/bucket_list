@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/api/countries';
+const baseUrl = 'http://localhost:3000/api/countries/';
 
 export default {
   getBucketList() {
@@ -18,6 +18,15 @@ export default {
   deleteCountry(id){
     return fetch(baseUrl + id, {
       method: 'DELETE'
+    });
+  },
+
+  updateCountry(id, payload) {
+    return fetch(baseUrl + id, {
+      method: 'PUT',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
     })
+    .then(res => res.json());
   }
 }

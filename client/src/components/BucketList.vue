@@ -11,17 +11,15 @@
 <script>
 
 import ListItem from '@/components/ListItem.vue';
+import {eventBus} from '@/main.js';
 
 export default {
   name: 'bucket-list',
   props: ['bucketList'],
+  mounted(){
+  
+  },
   methods: {
-    updateList(event){
-      console.log(event);
-      // const updatedCountry = {
-      //   name: this.
-      // };
-    }
   },
   components: {
     'list-item': ListItem

@@ -40,7 +40,13 @@ export default {
 
       eventBus.$on('country-selected', (country) => {
         this.selectedCountry = country;
-      })
+      });
+
+      eventBus.$on('country-updated', (updatedCountry) => {
+        const index = this.bucketList.findIndex(country => country._id === updatedCountry._id);
+        console.log(index);
+        this.bucketList.splice(index, 1, updatedCountry);
+      });
     },
     methods: {
       getCountries(){
@@ -58,7 +64,9 @@ export default {
           flag: this.selectedCountry.flag,
         };
         BucketService.addCountry(newCountry)
-        .then(this.bucketList.push(newCountry));
+        .then((country) => {
+          this.bucketList.push(country);
+        });
       }
     }
 }
