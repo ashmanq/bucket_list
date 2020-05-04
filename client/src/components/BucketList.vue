@@ -1,9 +1,8 @@
 <template lang="html">
   <div id="favourite_countries">
     <h2>Bucket List</h2>
-    <ul>
-      <list-item v-for="(country, index) in bucketList" :country="country" :key="index"></list-item>
-    </ul>
+    <button v-if="bucketList.length" v-on:click="clearlist">Clear List</button>
+    <list-item v-for="(country, index) in bucketList" :country="country" :key="index"></list-item>
   </div>
 </template>
 
@@ -19,6 +18,9 @@ export default {
 
   },
   methods: {
+    clearlist() {
+      eventBus.$emit('clear-bucket-list');
+    }
   },
   components: {
     'list-item': ListItem
@@ -27,9 +29,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
-ul {
-  margin-left: 0px;
-  padding: 0px;
-}
+ #favourite_countries {
+   display: flex;
+   flex-direction: column;
+ }
 </style>

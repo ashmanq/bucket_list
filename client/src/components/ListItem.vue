@@ -1,7 +1,8 @@
 <template lang="html">
-  <div class="">
-    <li v-bind:class="countryVisited()">{{ country.name }} <img class="small-flag" :src="country.flag"/>
-      <button v-if="!country.visited" v-on:click="updateList">Visit!</button></li>
+  <div v-bind:class="countryVisited()" class="container">
+    <p >{{ country.name }}</p>
+    <img class="small-flag" :src="country.flag"/>
+    <button v-if="!country.visited" v-on:click="updateList">Visit!</button>
 
   </div>
 </template>
@@ -36,36 +37,44 @@ export default {
 
 <style lang="css" scoped>
 
-
-li {
-  font-size: 1.2em;
-  padding:10px;
-  margin: 10px;
-  list-style: none;
-  margin-left: 0;
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
   border-radius: 5px;
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  padding:5px;
+  margin: 10px;
+}
+
+p {
+  font-size: 1.2em;
+  width: 100%;
   text-align: center;
   justify-content: center;
 }
 .visited {
   background-color: green;
-
 }
 
 button {
   padding: 2px;
   margin:10px;
   font-size: 1.2em;
+  border-radius: 5px;
 }
 
 button:hover {
   background-color: grey;
 }
 
+img{
+  height:60px;
+  width: 90px;
 
+}
 
 
 </style>

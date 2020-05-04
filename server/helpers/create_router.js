@@ -41,6 +41,16 @@ const createRouter = function (collection) {
     });
   })
 
+  router.delete('/', (req, res) => {
+    collection.deleteMany()
+    .then((docs) => res.json(docs))
+    .catch((err) => {
+      console.error(err);
+      res.status(500);
+      res.json({ status: 500, error: err });
+    });
+  })
+
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedCountry = req.body;

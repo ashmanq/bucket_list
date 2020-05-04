@@ -29,4 +29,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+label {
+  font-size: 1.2em;
+}
+select {
+  font-size: 1.2em;
+}
 </style>

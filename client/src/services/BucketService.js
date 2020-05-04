@@ -21,6 +21,12 @@ export default {
     });
   },
 
+  deleteAll(){
+    return fetch(baseUrl, {
+      method: 'DELETE'
+    });
+  },
+
   updateCountry(id, payload) {
     return fetch(baseUrl + id, {
       method: 'PUT',

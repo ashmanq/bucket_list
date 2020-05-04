@@ -14,9 +14,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+#selected_country {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .lrg-flag {
-  height: 100px
+  height: 200px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: lightgrey;
 }
 
 </style>

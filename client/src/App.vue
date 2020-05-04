@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>Travel Bucket List</h2>
+    <h1>Travel Bucket List</h1>
 
     <country-select :countries="countries"/>
 
@@ -47,6 +47,14 @@ export default {
         const index = this.bucketList.findIndex(country => country._id === updatedCountry._id);
         this.bucketList.splice(index, 1, updatedCountry);
       });
+
+      eventBus.$on('clear-bucket-list', () => {
+        BucketService.deleteAll()
+        .then(() => {
+          this.bucketList = [];
+        })
+
+      })
     },
     methods: {
       getCountries(){
@@ -91,8 +99,24 @@ h2 {
   font-size: 2em;
   text-align: center;
 }
+
+h1 {
+  font-size: 3em;
+  padding-bottom: 30px;
+}
 .small-flag {
   height: 30px
+}
+
+button {
+  padding: 5px;
+  margin:10px;
+  font-size: 1.2em;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: grey;
 }
 
 #app {
