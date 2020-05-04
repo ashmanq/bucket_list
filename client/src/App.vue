@@ -7,7 +7,8 @@
     <country-detail v-if="selectedCountry" :selectedCountry="selectedCountry">
     </country-detail>
 
-    <button v-if="!bucketList.includes(selectedCountry) && selectedCountry" v-on:click="addToBucketList">Add Country</button>
+    <!-- <button v-if="!checkExists() && selectedCountry" v-on:click="addToBucketList">Add Country</button> -->
+    <button v-if="!checkExists() && selectedCountry" v-on:click="addToBucketList">Add Country</button>
 
     <bucket-list :bucketList="bucketList"></bucket-list>
 </div>
@@ -44,7 +45,6 @@ export default {
 
       eventBus.$on('country-updated', (updatedCountry) => {
         const index = this.bucketList.findIndex(country => country._id === updatedCountry._id);
-        console.log(index);
         this.bucketList.splice(index, 1, updatedCountry);
       });
     },
@@ -67,14 +67,39 @@ export default {
         .then((country) => {
           this.bucketList.push(country);
         });
+      },
+      checkExists() {
+        if (this.selectedCountry ) {
+          return this.bucketList.some((country) => country.name === this.selectedCountry.name)
+        } else {
+          return false;
+        }
+
       }
     }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+}
 .small-flag {
-  height: 20px
+  height: 30px
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
 }
 
 

@@ -36,7 +36,36 @@ export default {
 
 <style lang="css" scoped>
 
-.visited {
-  background-color: red;
+
+li {
+  font-size: 1.2em;
+  padding:10px;
+  margin: 10px;
+  list-style: none;
+  margin-left: 0;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  text-align: center;
+  justify-content: center;
 }
+.visited {
+  background-color: green;
+
+}
+
+button {
+  padding: 2px;
+  margin:10px;
+  font-size: 1.2em;
+}
+
+button:hover {
+  background-color: grey;
+}
+
+
+
+
 </style>
